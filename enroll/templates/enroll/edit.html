@@ -1,0 +1,57 @@
+{% extends 'enroll/base.html' %}
+{% load static %}
+{% block title %}edit form{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="alert alert-success text-center"><label>Update Student Information Which Id = : {{myid}}</
+		label></div>
+		
+		<div class="row">
+			<div class="col-sm-5">
+				<form method="POST">{% csrf_token %}
+				{{form.as_p}}
+				<button type="submit" class="btn btn-success">Update</button>
+				<a href="/" class="btn btn-info">Back To Home</a>
+		    	</form>	
+		    </div>
+		    <div class="col-sm-1"></div>
+		    <div class="col-sm-6"><div class=" alert alert-success text-center">Search Student Via Name</div>
+		    <form method="POST">{% csrf_token %}
+		    	{{searchform}}<br>
+		    	<input type="submit" value="search"><br><hr>
+
+
+
+		    </form>
+	{% if da %}
+
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{da.id}}</th>
+      <td>{{da.name}}</td>
+      <td>{{da.email}}</td>
+      <td>{{da.password}}</td>
+    </tr>
+  </tbody>
+</table>
+	{% endif %}
+		    </div>
+	 
+		</div>
+	<div class="col-sm-2"></div>
+</div>
+
+{% endblock %}

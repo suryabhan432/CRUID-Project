@@ -1,0 +1,60 @@
+{% extends 'enroll/base.html' %}
+{% block title %}modelform{% endblock %}
+
+{% block content %}
+<div class="row">
+  
+  	<div class="col-sm-3">
+		<div class="alert alert-success text-center">Add New Student</div>
+    <form method="POST">{% csrf_token %}
+			{{form.as_p}}
+			<button type="submit" class="btn btn-info">Add</button>
+	</div>
+  </form>
+<!-- end of Add New Student -->
+
+	
+	<div class="col-sm-1"></div>
+	<div class="col-sm-8">
+		<div class="alert alert-success text-center">Show Student Information</div>
+		
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+   {% for data in st %}
+  <tbody>
+    <tr>
+      <th scope="row">{{data.id}}</th>
+      <td>{{data.name}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.password}}</td>
+      <td >
+        <div class="row">
+          
+          <div class="col-sm-6"><a href="{% url 'editdata' data.id %}" class="btn btn-info">edit</a><!-- <form method="POST" action="{% url 'editdata' data.id %}">{% csrf_token %}
+            <button type="submit" class="btn btn-info">Edit</button>
+        </form> --></div>
+        <div class="col-sm-6"><form action="{% url 'deletedata' data.id %}" method="POST">{% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form></div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+	
+			
+		</div>
+	</div>
+
+
+{% endblock content %}
+

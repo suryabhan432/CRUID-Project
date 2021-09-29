@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head> 
+	<title>{% block title %}base{% endblock title %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+ <div class="container"><br>
+ 	<div class="alert alert-danger text-center"><h3>Fucntion Based View ModelForm CRUID Project</h3></div>
+
+{% block content %}{% endblock content %}
+
+ </div>
+</body>
+</html>
